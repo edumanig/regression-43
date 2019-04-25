@@ -1,6 +1,6 @@
 pipeline {
   agent any
-  //stages {
+  stages {
   //  stage('Build') {
   //      steps {
   //          addBadge(icon: 'Test Icon', text: 'Test python version')
