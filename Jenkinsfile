@@ -19,7 +19,7 @@ pipeline {
             parameters: [
             string(name: 'secret', value: '/home/ubuntu/52.53.113.44.secret.tfvars'),
             string(name: 'account', value: 'EdselAWS'),
-            string(name: 'action', value: 'cluster3')
+            string(name: 'action', value: 'cluster0')
             ]
           }
     }
