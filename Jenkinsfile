@@ -3,31 +3,28 @@ pipeline {
   stages {
       stage('Build') {
           steps {
-              addBadge(icon: 'Test Icon', text: 'Test python version')
-              sh 'python --version'
+            addBadge(icon: 'Test Icon', text: 'Test python version')
+            sh 'python --version'
           }
       }
       stage('controller upgrade') {
           steps {
-              sh 'python  /home/ubuntu/python/upgrade.py 52.53.113.44 4.3'
-              echo 'done upgrading the controller'
+            addBadge(icon: 'Test Icon', text: 'Upgrade 4.3')
+            sh 'python  /home/ubuntu/python/upgrade.py 52.53.113.44 4.3'
+            echo 'done upgrading the controller'
           }
       }
       stage('Cluster0') {
           steps {
+            addBadge(icon: 'Test Icon', text: 'Cluster0 Transit')
             build (job: 'tgw-peering-benchmark',
             parameters: [
             string(name: 'secret', value: '/home/ubuntu/52.53.113.44.secret.tfvars'),
             string(name: 'account', value: 'EdselAWS'),
             string(name: 'action', value: 'cluster0')
             ])
+            addBadge(icon: 'Test Icon', text: 'Cluster0 Spoke')
             build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster0_spoke')])
-          }
-      }
-      stage('Cluster0_spoke') {
-          steps {
-            build job: 'tgw-peering-benchmark',
-            parameters: [string(name: 'action', value: 'cluster0_spoke')]
           }
       }
       stage('Cluster1') {
@@ -50,20 +47,21 @@ pipeline {
       }
       stage('Cluster4') {
           steps {
-            build job: 'tgw-peering-benchmark',
-            parameters: [string(name: 'action', value: 'cluster4')]
+            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster4')])
           }
       }
       stage('Cluster5 Azure') {
           steps {
-            build job: 'tgw-peering-benchmark',
-            parameters: [string(name: 'action', value: 'cluster5-azure')]
+            addBadge(icon: 'Test Icon', text: 'Cluster5 Azure Transit')
+            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster5-azure')])
+            addBadge(icon: 'Test Icon', text: 'Cluster5 Azure Spoke')
+            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster5_spoke_azure')])
           }
       }
-      stage('Cluster5 Spoke Azure') {
+      stage('Transit Peering') {
           steps {
-            build job: 'tgw-peering-benchmark',
-            parameters: [string(name: 'action', value: 'cluster5_spoke_azure')]
+            addBadge(icon: 'Test Icon', text: 'transit peering')
+            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'peering', value: 'transitX-6mesh')])
           }
       }
   }
