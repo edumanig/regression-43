@@ -15,13 +15,13 @@ pipeline {
       }
       stage('Cluster0') {
           steps {
-            build job: 'tgw-peering-benchmark',
+            build (job: 'tgw-peering-benchmark',
             parameters: [
             string(name: 'secret', value: '/home/ubuntu/52.53.113.44.secret.tfvars'),
             string(name: 'account', value: 'EdselAWS'),
             string(name: 'action', value: 'cluster0')
-            ]
-
+            ])
+            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster0_spoke')])
           }
       }
       stage('Cluster0_spoke') {
