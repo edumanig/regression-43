@@ -60,5 +60,11 @@ pipeline {
             parameters: [string(name: 'action', value: 'cluster5-azure')]
           }
       }
+      stage('Cluster5 Spoke Azure') {
+          steps {
+            build job: 'tgw-peering-benchmark',
+            parameters: [string(name: 'action', value: 'cluster5_spoke_azure')]
+          }
+      }
   }
 }
