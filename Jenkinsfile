@@ -53,7 +53,7 @@ pipeline {
       stage('Cluster5 Azure') {
           steps {
             addBadge(icon: 'Test Icon', text: 'Cluster5 Azure Transit')
-            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster5-azure')])
+            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster5')])
             addBadge(icon: 'Test Icon', text: 'Cluster5 Azure Spoke')
             build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster5_spoke_azure')])
           }
