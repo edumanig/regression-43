@@ -21,6 +21,11 @@ pipeline {
             string(name: 'account', value: 'EdselAWS'),
             string(name: 'action', value: 'cluster0')
             ]
+
+          }
+      }
+      stage('Cluster0_spoke') {
+          steps {
             build job: 'tgw-peering-benchmark',
             parameters: [string(name: 'action', value: 'cluster0_spoke')]
           }
