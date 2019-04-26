@@ -9,7 +9,7 @@ pipeline {
       }
       stage('controller upgrade') {
           steps {
-              sh 'python  /home/ubuntu/python/upgrade.py 52.53.113.44 4.2'
+              sh 'python  /home/ubuntu/python/upgrade.py 52.53.113.44 4.3'
               echo 'done upgrading the controller'
           }
       }
