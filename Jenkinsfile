@@ -20,6 +20,8 @@ pipeline {
             ])
             addBadge(icon: 'Test Icon', text: 'Cluster0 Spoke')
             build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster0_spoke')])
+            addBadge(icon: 'Test Icon', text: 'Cluster0 TGW Spoke')
+            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster0_tgw_spoke')])
           }
       }
       stage('Cluster1') {
