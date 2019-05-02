@@ -22,6 +22,8 @@ pipeline {
             build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster0_spoke')])
             addBadge(icon: 'Test Icon', text: 'Cluster0 TGW Spoke')
             build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster0_tgw_spoke')])
+            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster0_spoke_azure')])
+            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster0_spoke_gcp')])
           }
       }
       stage('Cluster1') {
@@ -45,6 +47,7 @@ pipeline {
       stage('Cluster4') {
           steps {
             build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster4')])
+            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster4_addTGW')])
           }
       }
       stage('Cluster5') {
