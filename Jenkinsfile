@@ -24,6 +24,7 @@ pipeline {
             build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster0_tgw_spoke')])
             build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster0_spoke_azure')])
             build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster0_spoke_gcp')])
+            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'onprem')])
           }
       }
       stage('Cluster1') {
