@@ -65,5 +65,11 @@ pipeline {
             build (job: 'tgw-peering-benchmark', parameters: [string(name: 'peering', value: 'transitX-6mesh')])
           }
       }
+      stage('Datacheck') {
+          steps {
+            addBadge(icon: 'Test Icon', text: 'datacheck')
+            build (job: 'tgw-peering-benchmark', parameters: [booleanParam(name: 'datacheck', value: true)])
+          }
+      }
   }
 }
