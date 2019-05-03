@@ -59,6 +59,17 @@ pipeline {
             build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster5_spoke_azure')])
           }
       }
+      stage('Cluster6') {
+          steps {
+            //addBadge(icon: 'Test Icon', text: 'Cluster6 Insane Transit')
+            //build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster6')])
+            addBadge(icon: 'Test Icon', text: 'Cluster6 Insane Spoke')
+            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster6_insanespoke')])
+            addBadge(icon: 'Test Icon', text: 'Cluster6 NonInsane Spoke')
+            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster6_noninsanespoke')])
+          }
+      }
+      /*
       stage('Transit Peering') {
           steps {
             addBadge(icon: 'Test Icon', text: 'transit peering')
@@ -71,5 +82,6 @@ pipeline {
             build (job: 'tgw-peering-benchmark', parameters: [booleanParam(name: 'datacheck', value: true)])
           }
       }
+      */
   }
 }
