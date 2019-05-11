@@ -5,8 +5,9 @@ pipeline {
           steps {
             sh 'python --version'
             addBadge(icon: 'Test Icon', text: 'Upgrade 4.3')
-            sh 'python  /home/ubuntu/python/upgrade.py 52.53.113.44 4.3'
+            sh 'python  /home/ubuntu/python/upgrade.py 52.53.113.44 4.3-patch'
             echo 'done upgrading the controller'
+            sh 'python python3 /home/ubuntu/python/get_version_set_banner.py 52.52.113.44 "Reg43 Canada Transit Peering"'
           }
       }
       stage('Cluster0') {
@@ -69,13 +70,14 @@ pipeline {
             build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster6_noninsanespoke')])
           }
       }
-      /*
+
       stage('Transit Peering') {
           steps {
             addBadge(icon: 'Test Icon', text: 'transit peering')
             build (job: 'tgw-peering-benchmark', parameters: [string(name: 'peering', value: 'transitX-6mesh')])
           }
       }
+      /*
       stage('Datacheck') {
           steps {
             addBadge(icon: 'Test Icon', text: 'datacheck')
