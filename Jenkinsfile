@@ -70,7 +70,12 @@ pipeline {
             build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster6_noninsanespoke')])
           }
       }
-
+      stage('Cluster7') {
+          steps {
+            addBadge(icon: 'Test Icon', text: 'Cluster Insane Transit2')
+            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'action', value: 'cluster7')])
+          }
+      }
       stage('Transit Peering') {
           steps {
             addBadge(icon: 'Test Icon', text: 'transit peering')
