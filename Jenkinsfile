@@ -5,7 +5,7 @@ pipeline {
           steps {
             sh 'python --version'
             addBadge(icon: 'Test Icon', text: 'Upgrade 4.3')
-            sh 'python  /home/ubuntu/python/upgrade.py 52.53.113.44 4.3-patch'
+            sh 'python  /home/ubuntu/python/upgrade.py 52.53.113.44 4.3'
             echo 'done upgrading the controller'
             // sh 'python3 /home/ubuntu/python/get_version_set_banner.py 52.52.113.44 "Reg43 Canada Transit Peering"'
           }
