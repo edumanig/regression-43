@@ -79,7 +79,7 @@ pipeline {
       stage('Transit Peering') {
           steps {
             addBadge(icon: 'Test Icon', text: 'transit peering')
-            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'peering', value: 'transitX-6mesh')])
+            build (job: 'tgw-peering-benchmark', parameters: [string(name: 'peering', value: 'transitX-8mesh')])
           }
       }
       /*
